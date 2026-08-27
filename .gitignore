@@ -1,0 +1,6 @@
+# macOS
+.DS_Store
+
+# Internal org documents — these contain officer names and signatures.
+# Deliberately NOT published. Remove these lines only if you intend them public.
+*.pdf
