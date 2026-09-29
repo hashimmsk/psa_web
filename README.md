@@ -2,7 +2,7 @@
 
 Website for the **Pakistani Students Association at the University of Miami**.
 
-- **Live site:** https://<your-domain>
+- **Live site:** https://psaumiami.com
 - **Instagram:** [@psa.umiami](https://www.instagram.com/psa.umiami/)
 - **Engage:** [Official org page](https://miami.campuslabs.com/engage/organization/pakistani-students-association)
 - **GroupMe:** [Join the group chat](https://groupme.com/join_group/99551332/4DJJ3RIY)

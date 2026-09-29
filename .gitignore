@@ -1,6 +1,9 @@
 # macOS
 .DS_Store
 
-# Internal org documents — these contain officer names and signatures.
+# Internal org documents — these contain officer names, phone numbers and signatures.
 # Deliberately NOT published. Remove these lines only if you intend them public.
 *.pdf
+*.xlsx
+*.docx
+safac-2026-27/
