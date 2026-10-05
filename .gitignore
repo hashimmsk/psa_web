@@ -1,5 +1,10 @@
-# macOS
+# macOS / Office lock files
 .DS_Store
+~$*
+
+# Private folders (officer contact details, signatures, unrelated files)
+org-docs/
+misc/
 
 # Internal org documents — these contain officer names, phone numbers and signatures.
 # Deliberately NOT published. Remove these lines only if you intend them public.
