@@ -12,3 +12,6 @@ misc/
 *.xlsx
 *.docx
 safac-2026-27/
+
+# local tooling
+.claude/

@@ -62,5 +62,7 @@ writes a regenerated documentation packet next to it. The copies SAFAC actually 
 ## Content sources
 
 Site copy is drawn from PSA's public Engage listing, its Engage event archive, and the
-organization's constitution. Board membership and contact details change yearly — treat the
-Engage page as authoritative.
+organization's constitution. The 1988–1993 founding history and the three archive photographs
+in `site-assets/history/` were shared with the board in September 2026 by Dr Jamil Yusuf,
+PSA's first Vice President, for publication. Board membership and contact details change
+yearly — treat the Engage page as authoritative.

@@ -408,6 +408,30 @@ p{ margin:0; }
 }
 .era::before,.era::after{ content:""; height:1px; flex:1; background:var(--hair); }
 
+/* ---------- founding-years archive ---------- */
+.pull{
+  margin:.35rem 0 0; padding:.7rem 0 .2rem 1rem;
+  border-left:3px solid var(--marigold);
+  font-family:var(--f-disp); font-size:clamp(1.1rem,1.9vw,1.4rem); line-height:1.3; color:var(--ink);
+  max-width:40ch;
+}
+.pull cite{ display:block; margin-top:.45rem; font-family:var(--f-mono); font-style:normal; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); }
+.archive{
+  display:grid; gap:clamp(.9rem,1.8vw,1.25rem);
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  padding-block:clamp(.6rem,1.5vw,1rem);
+}
+.archive figure{ margin:0; display:grid; gap:.55rem; }
+.archive img{
+  width:100%; height:auto;
+  border:6px solid var(--panel-2); outline:1.5px solid var(--hair);
+  border-radius:3px; box-shadow:var(--shadow);
+  filter:saturate(.92) contrast(1.03);
+}
+.archive figcaption{ font-family:var(--f-mono); font-size:.74rem; letter-spacing:.04em; color:var(--ink-3); line-height:1.5; }
+.gap{ color:var(--ink-2); max-width:62ch; padding-bottom:.4rem; }
+.gap a{ color:var(--marigold); }
+
 /* ---------- culture cards ---------- */
 .culture{ display:grid; gap:clamp(.9rem,1.8vw,1.2rem); grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); }
 .card{
@@ -668,13 +692,13 @@ footer .wrap{ display:grid; gap:1.4rem; padding-block:clamp(2.4rem,5vw,3.6rem); 
   <div class="wrap">
     <p class="eyebrow">Who we are</p>
     <h2>A community for Pakistani students &mdash; and everyone curious about Pakistan.</h2>
-    <p class="lede measure">PSA is dedicated to spreading awareness of Pakistani culture on campus. Our purpose is to bring the Pakistani community together and create a home away from home for Pakistani students &mdash; collaborating with other organizations, hosting cultural events, and showcasing our culture across the U.</p>
+    <p class="lede measure">Founded in September 1988 by eight students who found no PSA on campus and started one, PSA is dedicated to spreading awareness of Pakistani culture at the U. Our purpose is to bring the Pakistani community together and create a home away from home for Pakistani students &mdash; collaborating with other organizations, hosting cultural events, and showcasing our culture across the U.</p>
 
     <div class="stats">
-      <div class="stat"><b>2019</b><span>First event on record</span></div>
+      <div class="stat"><b>1988</b><span>Founded by eight students</span></div>
+      <div class="stat"><b>38</b><span>Years on campus</span></div>
       <div class="stat"><b>2&ndash;3</b><span>Major events per semester</span></div>
-      <div class="stat"><b>7</b><span>Years of events on record</span></div>
-      <div class="stat"><b>85</b><span>Members on Engage &middot; open to all UM students</span></div>
+      <div class="stat"><b>91</b><span>Members on Engage &middot; open to all UM students</span></div>
     </div>
 
     <div class="grid-3">
@@ -707,8 +731,8 @@ footer .wrap{ display:grid; gap:1.4rem; padding-block:clamp(2.4rem,5vw,3.6rem); 
 <section class="panel" id="events">
   <div class="wrap">
     <p class="eyebrow">The road so far</p>
-    <h2>Seven years of showing up &mdash; and a new season.</h2>
-    <p class="lede measure">Every event below is on the record in UM&rsquo;s Engage archive &mdash; from a 2019 game night in the Iron Arrow Room to a Mock Shaadi at the Rat. The 2026&ndash;27 season starts at the bottom.</p>
+    <h2>Thirty-eight years in the making &mdash; and a new season.</h2>
+    <p class="lede measure">The founding years come to us from the founders themselves: Dr Jamil Yusuf, PSA&rsquo;s first Vice President, wrote to the board in September 2026 after a friend found our Instagram. Everything from 2019 on is in UM&rsquo;s Engage archive. The 2026&ndash;27 season starts at the bottom.</p>
 
     <div class="road">
       <div class="road-strip">
@@ -734,6 +758,47 @@ footer .wrap{ display:grid; gap:1.4rem; padding-block:clamp(2.4rem,5vw,3.6rem); 
       </div>
 
       <div class="stops">
+        <p class="era">1988&ndash;1993 &mdash; The founding years</p>
+
+        <article class="stop rise">
+          <div class="stop-when"><span class="y">1988</span><span class="d">September</span></div>
+          <div class="stop-what">
+            <h3>Eight students start PSA</h3>
+            <p class="venue">University of Miami &middot; eight to ten Pakistani students on the whole campus</p>
+            <p>Dr Jamil Yusuf arrived in August 1988 for his MS and PhD, asked about a Pakistani association in his first meeting with other Pakistani students, and was told there wasn&rsquo;t one. So they started it. Dr Labeed Kazi was elected the first President, Dr Jamil Yusuf Vice President, and Ebrahim Ayoob Secretary and Treasurer. Within a couple of months COISO named PSA its most active organization.</p>
+            <div class="tags"><span class="tag tag-gold">8 founding members</span><span class="tag">COISO</span></div>
+          </div>
+        </article>
+
+        <article class="stop rise">
+          <div class="stop-when"><span class="y">1989</span><span class="d">&ndash; 1990</span></div>
+          <div class="stop-what">
+            <h3>PSA wins COISO</h3>
+            <p class="venue">Council of International Students and Organizations</p>
+            <p>Dr Jamil Yusuf became President in 1989 and PSA ran its own member, Abdul Razzak, for COISO Vice President &mdash; and won. In 1990 PSA took both the COISO President and Vice President seats, by a margin of 400 votes, from a club of fewer than twenty.</p>
+            <blockquote class="pull">&ldquo;Numbers does not matter. It was the Pakistani spirit that defeated all competitors.&rdquo;<cite>&mdash; Dr Jamil Yusuf, President 1989&ndash;90</cite></blockquote>
+          </div>
+        </article>
+
+        <article class="stop rise">
+          <div class="stop-when"><span class="y">1993</span><span class="d">August</span></div>
+          <div class="stop-what">
+            <h3>Thirty members strong</h3>
+            <p class="venue">Campus stalls, community dinners, MSO collaborations</p>
+            <p>PSA campaigned for Pakistan, Kashmir, Bosnia and Palestine, worked closely with the Muslim Students Organization, and brought the local Pakistani community onto campus. When the founders graduated in 1993 the eight had become more than thirty. The founding team still meets &mdash; a dozen of them gathered in Karachi in December 2024.</p>
+            <div class="tags"><span class="tag tag-turq">30+ members</span><span class="tag">Still in touch</span></div>
+          </div>
+        </article>
+
+        <div class="archive" aria-label="Photographs from the founding years, shared by Dr Jamil Yusuf">
+          <figure><img src="site-assets/history/psa-founders.jpg" width="560" height="420" loading="lazy" alt="Eight founding members of PSA standing in a wood-panelled room, several in white shalwar kameez"><figcaption>The founding team, late 1980s. Third from right: Dr Labeed Kazi, PSA&rsquo;s first President.</figcaption></figure>
+          <figure><img src="site-assets/history/psa-stall-early-1990s.jpg" width="560" height="312" loading="lazy" alt="An outdoor PSA stall under a hand-painted green banner reading Pakistan Student Assoc., with green and white balloons and a Pakistani flag on the table"><figcaption>The PSA stall at a campus festival, early 1990s. Hand-painted banner, ajrak tablecloths, the flag.</figcaption></figure>
+          <figure><img src="site-assets/history/psa-1992-group.jpg" width="560" height="395" loading="lazy" alt="Group photograph of about eighteen PSA members in 1992, three rows, front row kneeling"><figcaption>PSA UM, 1992. By now the club had women members too. Back row, far right: Ebrahim Ayoob, founding Treasurer.</figcaption></figure>
+        </div>
+
+        <p class="era">1993&ndash;2019 &mdash; help us fill the gap</p>
+        <p class="gap">Twenty-six years of PSA happened between these photographs and the Engage archive. If you were part of it, write to <a href="mailto:hxs1101@miami.edu">hxs1101@miami.edu</a> &mdash; a name, a year, a photo. This page is the record.</p>
+
         <p class="era">Era: &ldquo;PakSA&rdquo;</p>
 
         <article class="stop rise">
@@ -976,6 +1041,10 @@ footer .wrap{ display:grid; gap:1.4rem; padding-block:clamp(2.4rem,5vw,3.6rem); 
         <div class="body">No. Membership is open to all University of Miami students, and PSA&rsquo;s constitution carries an explicit non-discrimination clause covering race, color, sexual orientation, religion, sex, national origin, age, disability, marital and veteran status, gender identity and expression, and political or religious affiliation. Events like Game Night and the Eid celebration were advertised as open to everyone at UM.</div>
       </details>
       <details>
+        <summary>How old is PSA?</summary>
+        <div class="body">Older than most people assume. PSA was founded in September 1988 by eight students &mdash; Dr Labeed Kazi as President, Dr Jamil Yusuf as Vice President, Ebrahim Ayoob as Secretary and Treasurer &mdash; and within two years held both top seats of COISO. We learned this in September 2026, when Dr Jamil wrote to the board after finding our Instagram. The founding years are now at the top of the timeline above, and we are still looking for the story of 1993 to 2019.</div>
+      </details>
+      <details>
         <summary>What counts as being a &ldquo;member&rdquo;?</summary>
         <div class="body">General membership is open to any UM student in good academic standing who has paid the Student Activity Fee and is enrolled full-time (12 undergraduate credits, or 9 for graduate students). <b>Active</b> membership is the tier that matters for voting and running for the board: attend 50% of the semester&rsquo;s events.</div>
       </details>
@@ -1022,7 +1091,6 @@ footer .wrap{ display:grid; gap:1.4rem; padding-block:clamp(2.4rem,5vw,3.6rem); 
         <a href="https://miami.campuslabs.com/engage/organizations">All UM organizations</a>
       </div>
     </div>
-    <p class="fine">Built from PSA&rsquo;s public Engage listing, its event archive, and the organization&rsquo;s constitution dated 11 April 2024. Board membership, contact details and event plans change each year &mdash; treat the Engage page as the authoritative source. Design draws on Pakistani truck art (<em>phool patti</em>); the crest is PSA&rsquo;s own.</p>
   </div>
 </footer>
 
