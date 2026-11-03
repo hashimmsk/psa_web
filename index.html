@@ -408,6 +408,97 @@ p{ margin:0; }
 }
 .era::before,.era::after{ content:""; height:1px; flex:1; background:var(--hair); }
 
+/* ---------- past eras fold away; the current season stays open ---------- */
+:root{ interpolate-size:allow-keywords; }
+details.fold{
+  background:linear-gradient(170deg,var(--panel-2),var(--panel));
+  border-radius:6px 6px 16px 16px;
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+details.fold:hover{ border-color:var(--chrome-2); }
+details.fold[open]{ box-shadow:var(--shadow); }
+details.fold::details-content{
+  height:0; overflow:clip;
+  transition:height .45s cubic-bezier(.2,.8,.25,1), content-visibility .45s allow-discrete;
+}
+details.fold[open]::details-content{ height:auto; }
+.fold > summary{
+  display:grid; grid-template-columns:minmax(0,7.5rem) 1fr auto auto;
+  gap:clamp(.85rem,2.2vw,1.6rem); align-items:center;
+  padding:clamp(1rem,2vw,1.3rem) clamp(1rem,2.2vw,1.5rem);
+}
+.fold > summary::after{
+  display:grid; place-items:center;
+  width:2.3rem; height:2.3rem; border-radius:50%;
+  border:1.5px solid var(--chrome-2); font-size:1.35rem;
+  background:var(--panel);
+}
+.fold > summary:focus-visible{ outline:2px solid var(--marigold); outline-offset:-4px; border-radius:6px; }
+.fold-yrs{
+  font-family:var(--f-disp); font-weight:400; font-size:clamp(1.25rem,2.6vw,1.7rem);
+  line-height:.95; color:var(--turq); font-variant-numeric:tabular-nums;
+}
+.fold-yrs small{ display:block; font-size:.62em; color:var(--ink-3); }
+.fold-txt{ display:grid; gap:.22rem; min-width:0; }
+.fold-era{ font-family:var(--f-mono); font-weight:400; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--chrome-2); }
+.fold-h{ font-family:var(--f-disp); font-weight:400; font-size:clamp(1.15rem,2.2vw,1.45rem); line-height:1.15; color:var(--ink); }
+.fold-meta{ font-family:var(--f-mono); font-weight:400; font-size:.74rem; letter-spacing:.05em; color:var(--ink-3); }
+.fold-thumbs{ display:flex; }
+.fold-thumbs img{
+  width:44px; height:44px; object-fit:cover; border-radius:50%;
+  border:2px solid var(--panel-2); outline:1.5px solid var(--hair);
+  margin-left:-12px; filter:saturate(.85);
+}
+.fold-thumbs img:first-child{ margin-left:0; }
+.fold-body{
+  display:grid; gap:clamp(1rem,2vw,1.4rem);
+  padding:0 clamp(1rem,2.2vw,1.5rem) clamp(.6rem,1.5vw,1rem);
+  border-top:1.5px dashed var(--hair);
+}
+.fold-body > .stop:first-child{ border-top:none; }
+.gap-row{
+  display:grid; grid-template-columns:minmax(0,7.5rem) 1fr; gap:clamp(.85rem,2.2vw,1.6rem);
+  padding:clamp(.85rem,1.8vw,1.1rem) clamp(1rem,2.2vw,1.5rem);
+  border:1.5px dashed var(--hair); border-radius:6px;
+}
+.gap-row .gap{ padding:0; font-size:.95rem; }
+
+/* current season */
+.season-head{
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:.4rem 1rem;
+  padding-top:clamp(1rem,2.4vw,1.8rem);
+}
+.season-head h3{ font-family:var(--f-disp); font-weight:400; font-size:clamp(1.7rem,3.8vw,2.5rem); line-height:1; }
+.season-head p{ font-family:var(--f-mono); font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); }
+.live{ display:inline-flex; align-items:center; gap:.45rem; color:var(--marigold); }
+.live::before{
+  content:""; width:.55rem; height:.55rem; border-radius:50%; background:var(--marigold);
+  box-shadow:0 0 0 0 color-mix(in srgb,var(--marigold) 60%,transparent);
+  animation:pulse 2.2s ease-out infinite;
+}
+@keyframes pulse{ 70%{ box-shadow:0 0 0 .55rem transparent; } 100%{ box-shadow:0 0 0 0 transparent; } }
+.season{ display:grid; gap:clamp(1rem,2vw,1.4rem); }
+.season .stop{ padding-inline:0; }
+.tag-done{ color:var(--ink-3); border-style:dashed; }
+.tag-next{ color:var(--ground); background:var(--marigold); border-color:var(--marigold); font-weight:500; }
+.stop.is-done .stop-when .y{ color:var(--ink-3); }
+.stop.is-next{ border-top-color:var(--marigold); }
+.plans{ display:grid; gap:clamp(.8rem,1.6vw,1.1rem); grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr)); }
+.plan{
+  position:relative; display:grid; gap:.55rem; align-content:start;
+  background:var(--panel); border:1.5px dashed var(--chrome-2);
+  border-radius:4px 4px 16px 16px; padding:clamp(1rem,2vw,1.3rem);
+}
+.plan > *{ margin:0; }
+.plan .icon{ margin-bottom:.2rem; }
+.plan h4{ font-family:var(--f-disp); font-weight:400; font-size:clamp(1.2rem,2.2vw,1.45rem); line-height:1.1; }
+.plan .when{ font-family:var(--f-mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--marigold); }
+.plan p{ color:var(--ink-2); font-size:.93rem; }
+.plan .icon{ width:44px; height:44px; }
+.plan .icon svg{ width:24px; height:24px; }
+.plans-note{ font-size:.88rem; color:var(--ink-3); }
+.plans-note a{ color:var(--marigold); }
+
 /* ---------- founding-years archive ---------- */
 .pull{
   margin:.35rem 0 0; padding:.7rem 0 .2rem 1rem;
@@ -556,12 +647,20 @@ footer .wrap{ display:grid; gap:1.4rem; padding-block:clamp(2.4rem,5vw,3.6rem); 
   .stop{ grid-template-columns:1fr; gap:.5rem; }
   .rule{ grid-template-columns:1fr; gap:.25rem; }
   .stop-when{ display:flex; align-items:baseline; gap:.7rem; }
+  .fold > summary{ grid-template-columns:1fr auto; gap:.35rem .8rem; }
+  .fold > summary::after{ grid-column:2; grid-row:1 / span 2; }
+  .fold-yrs{ grid-column:1; font-size:1.05rem; }
+  .fold-yrs small{ display:inline; font-size:1em; }
+  .fold-txt{ grid-column:1; }
+  .fold-thumbs{ display:none; }
+  .gap-row{ grid-template-columns:1fr; gap:.3rem; }
 }
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
   .ticker-track{ animation:none; }
   .rise{ opacity:1; transform:none; }
+  .live::before{ animation:none; }
 }
 </style>
 
@@ -652,6 +751,18 @@ footer .wrap{ display:grid; gap:1.4rem; padding-block:clamp(2.4rem,5vw,3.6rem); 
       <circle cx="12.5" cy="10" r="4"/><circle cx="19.5" cy="10" r="4"/><circle cx="16" cy="6.5" r="4"/>
       <path d="M11.6 19h8.8"/>
     </symbol>
+    <symbol id="i-kite" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 2l9 11-9 9-9-9z"/><path d="M16 2v20M7 13h18"/>
+      <path d="M16 22c-1 3 2 3.5 1 6.5"/><path d="M14.5 25.5l3 .8M14.8 28.6l3-.4"/>
+    </symbol>
+    <symbol id="i-cricket" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21.5 3.5l3 3-12 14-5-1-1-5z"/><path d="M6.5 19.5l-3.5 3.5 3 3 3.5-3.5"/>
+      <circle cx="24" cy="23" r="4"/><path d="M21.4 20.4c1.6 1.4 3.5 3.3 5.2 5.2"/>
+    </symbol>
+    <symbol id="i-note" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 24V6l14-3v18"/><path d="M12 11l14-3"/>
+      <circle cx="8.5" cy="24" r="3.5"/><circle cx="22.5" cy="21" r="3.5"/>
+    </symbol>
   </defs>
 </svg>
 
@@ -732,7 +843,7 @@ footer .wrap{ display:grid; gap:1.4rem; padding-block:clamp(2.4rem,5vw,3.6rem); 
   <div class="wrap">
     <p class="eyebrow">The road so far</p>
     <h2>Thirty-eight years in the making &mdash; and a new season.</h2>
-    <p class="lede measure">The founding years come to us from the founders themselves: Dr Jamil Yusuf, PSA&rsquo;s first Vice President, wrote to the board in September 2026 after a friend found our Instagram. Everything from 2019 on is in UM&rsquo;s Engage archive. The 2026&ndash;27 season starts at the bottom.</p>
+    <p class="lede measure">The founding years come to us from the founders themselves: Dr Jamil Yusuf, PSA&rsquo;s first Vice President, wrote to the board in September 2026 after a friend found our Instagram. Everything from 2019 on is in UM&rsquo;s Engage archive. Past eras fold away &mdash; tap <b>+</b> to open one. The 2026&ndash;27 season is laid out in full at the bottom.</p>
 
     <div class="road">
       <div class="road-strip">
@@ -758,164 +869,242 @@ footer .wrap{ display:grid; gap:1.4rem; padding-block:clamp(2.4rem,5vw,3.6rem); 
       </div>
 
       <div class="stops">
-        <p class="era">1988&ndash;1993 &mdash; The founding years</p>
+        <details class="fold">
+          <summary>
+            <span class="fold-yrs">1988<small> &ndash; 1993</small></span>
+            <span class="fold-txt"><span class="fold-era">The founding years</span><span class="fold-h">Eight students start PSA</span><span class="fold-meta">3 milestones &middot; 3 archive photos &middot; first-hand from Dr Jamil Yusuf</span></span>
+            <span class="fold-thumbs" aria-hidden="true"><img src="site-assets/history/psa-founders.jpg" alt="" loading="lazy"><img src="site-assets/history/psa-stall-early-1990s.jpg" alt="" loading="lazy"><img src="site-assets/history/psa-1992-group.jpg" alt="" loading="lazy"></span>
+          </summary>
+          <div class="fold-body">
+          <article class="stop rise">
+            <div class="stop-when"><span class="y">1988</span><span class="d">September</span></div>
+            <div class="stop-what">
+              <h3>Eight students start PSA</h3>
+              <p class="venue">University of Miami &middot; eight to ten Pakistani students on the whole campus</p>
+              <p>Dr Jamil Yusuf arrived in August 1988 for his MS and PhD, asked about a Pakistani association in his first meeting with other Pakistani students, and was told there wasn&rsquo;t one. So they started it. Dr Labeed Kazi was elected the first President, Dr Jamil Yusuf Vice President, and Ebrahim Ayoob Secretary and Treasurer. Within a couple of months COISO named PSA its most active organization.</p>
+              <div class="tags"><span class="tag tag-gold">8 founding members</span><span class="tag">COISO</span></div>
+            </div>
+          </article>
 
-        <article class="stop rise">
-          <div class="stop-when"><span class="y">1988</span><span class="d">September</span></div>
-          <div class="stop-what">
-            <h3>Eight students start PSA</h3>
-            <p class="venue">University of Miami &middot; eight to ten Pakistani students on the whole campus</p>
-            <p>Dr Jamil Yusuf arrived in August 1988 for his MS and PhD, asked about a Pakistani association in his first meeting with other Pakistani students, and was told there wasn&rsquo;t one. So they started it. Dr Labeed Kazi was elected the first President, Dr Jamil Yusuf Vice President, and Ebrahim Ayoob Secretary and Treasurer. Within a couple of months COISO named PSA its most active organization.</p>
-            <div class="tags"><span class="tag tag-gold">8 founding members</span><span class="tag">COISO</span></div>
+          <article class="stop rise">
+            <div class="stop-when"><span class="y">1989</span><span class="d">&ndash; 1990</span></div>
+            <div class="stop-what">
+              <h3>PSA wins COISO</h3>
+              <p class="venue">Council of International Students and Organizations</p>
+              <p>Dr Jamil Yusuf became President in 1989 and PSA ran its own member, Abdul Razzak, for COISO Vice President &mdash; and won. In 1990 PSA took both the COISO President and Vice President seats, by a margin of 400 votes, from a club of fewer than twenty.</p>
+              <blockquote class="pull">&ldquo;Numbers does not matter. It was the Pakistani spirit that defeated all competitors.&rdquo;<cite>&mdash; Dr Jamil Yusuf, President 1989&ndash;90</cite></blockquote>
+            </div>
+          </article>
+
+          <article class="stop rise">
+            <div class="stop-when"><span class="y">1993</span><span class="d">August</span></div>
+            <div class="stop-what">
+              <h3>Thirty members strong</h3>
+              <p class="venue">Campus stalls, community dinners, MSO collaborations</p>
+              <p>PSA campaigned for Pakistan, Kashmir, Bosnia and Palestine, worked closely with the Muslim Students Organization, and brought the local Pakistani community onto campus. When the founders graduated in 1993 the eight had become more than thirty. The founding team still meets &mdash; a dozen of them gathered in Karachi in December 2024.</p>
+              <div class="tags"><span class="tag tag-turq">30+ members</span><span class="tag">Still in touch</span></div>
+            </div>
+          </article>
+
+          <div class="archive" aria-label="Photographs from the founding years, shared by Dr Jamil Yusuf">
+            <figure><img src="site-assets/history/psa-founders.jpg" width="560" height="420" loading="lazy" alt="Eight founding members of PSA standing in a wood-panelled room, several in white shalwar kameez"><figcaption>The founding team, late 1980s. Third from right: Dr Labeed Kazi, PSA&rsquo;s first President.</figcaption></figure>
+            <figure><img src="site-assets/history/psa-stall-early-1990s.jpg" width="560" height="312" loading="lazy" alt="An outdoor PSA stall under a hand-painted green banner reading Pakistan Student Assoc., with green and white balloons and a Pakistani flag on the table"><figcaption>The PSA stall at a campus festival, early 1990s. Hand-painted banner, ajrak tablecloths, the flag.</figcaption></figure>
+            <figure><img src="site-assets/history/psa-1992-group.jpg" width="560" height="395" loading="lazy" alt="Group photograph of about eighteen PSA members in 1992, three rows, front row kneeling"><figcaption>PSA UM, 1992. By now the club had women members too. Back row, far right: Ebrahim Ayoob, founding Treasurer.</figcaption></figure>
           </div>
-        </article>
-
-        <article class="stop rise">
-          <div class="stop-when"><span class="y">1989</span><span class="d">&ndash; 1990</span></div>
-          <div class="stop-what">
-            <h3>PSA wins COISO</h3>
-            <p class="venue">Council of International Students and Organizations</p>
-            <p>Dr Jamil Yusuf became President in 1989 and PSA ran its own member, Abdul Razzak, for COISO Vice President &mdash; and won. In 1990 PSA took both the COISO President and Vice President seats, by a margin of 400 votes, from a club of fewer than twenty.</p>
-            <blockquote class="pull">&ldquo;Numbers does not matter. It was the Pakistani spirit that defeated all competitors.&rdquo;<cite>&mdash; Dr Jamil Yusuf, President 1989&ndash;90</cite></blockquote>
           </div>
-        </article>
+        </details>
 
-        <article class="stop rise">
-          <div class="stop-when"><span class="y">1993</span><span class="d">August</span></div>
-          <div class="stop-what">
-            <h3>Thirty members strong</h3>
-            <p class="venue">Campus stalls, community dinners, MSO collaborations</p>
-            <p>PSA campaigned for Pakistan, Kashmir, Bosnia and Palestine, worked closely with the Muslim Students Organization, and brought the local Pakistani community onto campus. When the founders graduated in 1993 the eight had become more than thirty. The founding team still meets &mdash; a dozen of them gathered in Karachi in December 2024.</p>
-            <div class="tags"><span class="tag tag-turq">30+ members</span><span class="tag">Still in touch</span></div>
-          </div>
-        </article>
-
-        <div class="archive" aria-label="Photographs from the founding years, shared by Dr Jamil Yusuf">
-          <figure><img src="site-assets/history/psa-founders.jpg" width="560" height="420" loading="lazy" alt="Eight founding members of PSA standing in a wood-panelled room, several in white shalwar kameez"><figcaption>The founding team, late 1980s. Third from right: Dr Labeed Kazi, PSA&rsquo;s first President.</figcaption></figure>
-          <figure><img src="site-assets/history/psa-stall-early-1990s.jpg" width="560" height="312" loading="lazy" alt="An outdoor PSA stall under a hand-painted green banner reading Pakistan Student Assoc., with green and white balloons and a Pakistani flag on the table"><figcaption>The PSA stall at a campus festival, early 1990s. Hand-painted banner, ajrak tablecloths, the flag.</figcaption></figure>
-          <figure><img src="site-assets/history/psa-1992-group.jpg" width="560" height="395" loading="lazy" alt="Group photograph of about eighteen PSA members in 1992, three rows, front row kneeling"><figcaption>PSA UM, 1992. By now the club had women members too. Back row, far right: Ebrahim Ayoob, founding Treasurer.</figcaption></figure>
+        <div class="gap-row">
+          <span class="fold-yrs">1993<small> &ndash; 2019</small></span>
+          <p class="gap"><b>Help us fill the gap.</b> Twenty-six years of PSA happened between these photographs and the Engage archive. If you were part of it, write to <a href="mailto:hxs1101@miami.edu">hxs1101@miami.edu</a> &mdash; a name, a year, a photo. This page is the record.</p>
         </div>
 
-        <p class="era">1993&ndash;2019 &mdash; help us fill the gap</p>
-        <p class="gap">Twenty-six years of PSA happened between these photographs and the Engage archive. If you were part of it, write to <a href="mailto:hxs1101@miami.edu">hxs1101@miami.edu</a> &mdash; a name, a year, a photo. This page is the record.</p>
+        <details class="fold">
+          <summary>
+            <span class="fold-yrs">2019<small> &ndash; 2021</small></span>
+            <span class="fold-txt"><span class="fold-era">Era: &ldquo;PakSA&rdquo;</span><span class="fold-h">Game nights, Ludo online, ice cream on Foote Green</span><span class="fold-meta">3 events &middot; from the Engage archive</span></span>
+            <span></span>
+          </summary>
+          <div class="fold-body">
+          <article class="stop rise">
+            <div class="stop-when"><span class="y">2019</span><span class="d">Fri 15 Nov &middot; 5:30 pm</span></div>
+            <div class="stop-what">
+              <h3>PakSA Game Night</h3>
+              <p class="venue">Iron Arrow Room &middot; 3rd Floor, Shalala Student Center</p>
+              <p>Promoting the cultural diversity of Pakistan through local food, games and chats. Open to everyone at UM &mdash; a blend of traditional and western games.</p>
+              <div class="tags"><span class="tag tag-gold">Free food</span><span class="tag">Open to all</span></div>
+            </div>
+          </article>
 
-        <p class="era">Era: &ldquo;PakSA&rdquo;</p>
+          <article class="stop rise">
+            <div class="stop-when"><span class="y">2021</span><span class="d">Wed 3 Mar &middot; 6:00 pm</span></div>
+            <div class="stop-what">
+              <h3>PakSA&rsquo;s Ludo Night</h3>
+              <p class="venue">Online &mdash; &ldquo;please have Ludo Star 1 downloaded beforehand&rdquo;</p>
+              <p>The pandemic edition. A Wellness Wednesday capped off with a little competition, excitement and a whole lot of fun.</p>
+              <div class="tags"><span class="tag tag-turq">Virtual</span><span class="tag">Ludo Star</span></div>
+            </div>
+          </article>
 
-        <article class="stop rise">
-          <div class="stop-when"><span class="y">2019</span><span class="d">Fri 15 Nov &middot; 5:30 pm</span></div>
-          <div class="stop-what">
-            <h3>PakSA Game Night</h3>
-            <p class="venue">Iron Arrow Room &middot; 3rd Floor, Shalala Student Center</p>
-            <p>Promoting the cultural diversity of Pakistan through local food, games and chats. Open to everyone at UM &mdash; a blend of traditional and western games.</p>
-            <div class="tags"><span class="tag tag-gold">Free food</span><span class="tag">Open to all</span></div>
+          <article class="stop rise">
+            <div class="stop-when"><span class="y">2021</span><span class="d">Mon 20 Sep &middot; 7:30 pm</span></div>
+            <div class="stop-what">
+              <h3>PakSA Ice Cream Social</h3>
+              <p class="venue">Foote Green</p>
+              <p>Back outdoors. Come meet the members, get ice cream, stay an hour or stay all evening.</p>
+              <div class="tags"><span class="tag tag-gold">Free food</span><span class="tag">Outdoors</span></div>
+            </div>
+          </article>
           </div>
-        </article>
+        </details>
 
-        <article class="stop rise">
-          <div class="stop-when"><span class="y">2021</span><span class="d">Wed 3 Mar &middot; 6:00 pm</span></div>
-          <div class="stop-what">
-            <h3>PakSA&rsquo;s Ludo Night</h3>
-            <p class="venue">Online &mdash; &ldquo;please have Ludo Star 1 downloaded beforehand&rdquo;</p>
-            <p>The pandemic edition. A Wellness Wednesday capped off with a little competition, excitement and a whole lot of fun.</p>
-            <div class="tags"><span class="tag tag-turq">Virtual</span><span class="tag">Ludo Star</span></div>
+        <details class="fold">
+          <summary>
+            <span class="fold-yrs">2024<small> &ndash; 2025</small></span>
+            <span class="fold-txt"><span class="fold-era">Era: &ldquo;PSA&rdquo;</span><span class="fold-h">The rebuild: an Eid ballroom and a Mock Shaadi</span><span class="fold-meta">4 events &middot; GBMs, Eid, Senior Send-off</span></span>
+            <span></span>
+          </summary>
+          <div class="fold-body">
+          <article class="stop rise">
+            <div class="stop-when"><span class="y">2024</span><span class="d">Thu 29 Feb &middot; 7:00 pm</span></div>
+            <div class="stop-what">
+              <h3>General Body Meeting</h3>
+              <p class="venue">Shalala Student Center</p>
+              <p>A leap-day GBM &mdash; the reset that rebuilt the board and the calendar.</p>
+              <div class="tags"><span class="tag">Members</span></div>
+            </div>
+          </article>
+
+          <article class="stop rise">
+            <div class="stop-when"><span class="y">2024</span><span class="d">Sun 14 Apr &middot; 7:00 pm</span></div>
+            <div class="stop-what">
+              <h3>Reflection &amp; Renewal: Eid Celebration</h3>
+              <p class="venue">Shalala Grand Ballroom</p>
+              <p>Food, guest speakers and activities for the Eid holiday. Cultural and formal attire, open to all &mdash; a full ballroom for Eid.</p>
+              <div class="tags"><span class="tag">Cultural attire</span><span class="tag">Open to all</span></div>
+            </div>
+          </article>
+
+          <article class="stop rise">
+            <div class="stop-when"><span class="y">2025</span><span class="d">Tue 4 Mar &middot; 6:00 pm</span></div>
+            <div class="stop-what">
+              <h3>PSA Spring General Body Meeting</h3>
+              <p class="venue">Shalala Student Center 314 &middot; Grand Ballroom West</p>
+              <p>The first GBM of the year: meet fellow members, play a night of Tambola, and hear the whole slate of events being planned. Three hours, green and white throughout.</p>
+              <div class="tags"><span class="tag tag-gold">Tambola</span><span class="tag">3 hours</span></div>
+            </div>
+          </article>
+
+          <article class="stop rise">
+            <div class="stop-when"><span class="y">2025</span><span class="d">Sat 12 Apr &middot; 6:00 pm</span></div>
+            <div class="stop-what">
+              <h3>Senior Send-off: Mock Shaadi</h3>
+              <p class="venue">The Rathskeller &middot; 1330 Miller Drive</p>
+              <p>Four and a half hours of mock-wedding chaos to send the seniors off &mdash; dinner, dancing, and senior shoutouts. The biggest night PSA has thrown.</p>
+              <div class="tags"><span class="tag tag-gold">Free food</span><span class="tag">6&ndash;10:30 pm</span></div>
+            </div>
+          </article>
           </div>
-        </article>
+        </details>
 
-        <article class="stop rise">
-          <div class="stop-when"><span class="y">2021</span><span class="d">Mon 20 Sep &middot; 7:30 pm</span></div>
-          <div class="stop-what">
-            <h3>PakSA Ice Cream Social</h3>
-            <p class="venue">Foote Green</p>
-            <p>Back outdoors. Come meet the members, get ice cream, stay an hour or stay all evening.</p>
-            <div class="tags"><span class="tag tag-gold">Free food</span><span class="tag">Outdoors</span></div>
+        <div class="season-head">
+          <h3>2026&ndash;27 season</h3>
+          <p><span class="live">Now</span> &middot; 6 events this fall &middot; 4 planned for spring</p>
+        </div>
+
+        <div class="season">
+          <p class="era">Fall 2026</p>
+
+          <article class="stop rise" data-date="2026-09-22">
+            <div class="stop-when"><span class="y">2026</span><span class="d">Tue 22 Sep &middot; 9:00 pm</span></div>
+            <div class="stop-what">
+              <h3>Fall GBM &times; Jeopardy Night</h3>
+              <p class="venue">Senate Room &middot; Shalala Student Center</p>
+              <p>The year&rsquo;s kickoff: new freshmen, the new board, the whole 2026&ndash;27 slate &mdash; and a round of Jeopardy to settle who actually knows their Pakistan trivia. Samosas on the table, new and familiar faces all night.</p>
+              <div class="tags"><span class="tag status">Done</span><span class="tag">Fall GBM</span><span class="tag tag-gold">Jeopardy</span><span class="tag tag-gold">Samosas</span></div>
+            </div>
+          </article>
+
+          <article class="stop rise" data-date="2026-10-01">
+            <div class="stop-when"><span class="y">2026</span><span class="d">Thu 1 Oct &middot; 8:00 pm</span></div>
+            <div class="stop-what">
+              <h3>PSA Movie Night: <em>Jawani Phir Nahi Ani 2</em></h3>
+              <p class="venue">Shalala Activities Room North &middot; 8&ndash;10 pm</p>
+              <p>Subtitles on, biryani first-come-first-served, and a room full of laughs. One of the best-attended nights of the semester.</p>
+              <div class="tags"><span class="tag status">Done</span><span class="tag tag-gold">Free biryani</span><span class="tag">Open to all</span></div>
+            </div>
+          </article>
+
+          <article class="stop rise" data-date="2026-10-30">
+            <div class="stop-when"><span class="y">2026</span><span class="d">Fri 30 Oct &middot; 5:00 pm</span></div>
+            <div class="stop-what">
+              <h3>PSA &times; Badminton Club Tournament</h3>
+              <p class="venue">Herbert Wellness Center &middot; 5&ndash;9 pm</p>
+              <p>Teams, a bracket and a trophy &mdash; with UM&rsquo;s Badminton Club. Players and spectators both welcome, food on the side, and a winning team crowned at the end of the night.</p>
+              <div class="tags"><span class="tag status">Done</span><span class="tag tag-turq">With Badminton Club</span><span class="tag tag-gold">Food provided</span></div>
+            </div>
+          </article>
+
+          <article class="stop rise" data-date="2026-11-01">
+            <div class="stop-when"><span class="y">2026</span><span class="d">Sun 1 Nov &middot; 7:00 pm</span></div>
+            <div class="stop-what">
+              <h3>Fall Social: <em>Mehfil e Khizaan</em></h3>
+              <p class="venue">Konos Gelato &middot; 5885 Sunset Dr, South Miami &middot; 7&ndash;9 pm</p>
+              <p>An autumn mehfil over gelato, coffee and matcha. A cozy evening with the PSA family &mdash; and 10% off everything for PSA members.</p>
+              <div class="tags"><span class="tag status">Done</span><span class="tag tag-rose">Off campus</span><span class="tag">10% off for members</span></div>
+            </div>
+          </article>
+
+          <article class="stop rise" data-date="2026-11-07">
+            <div class="stop-when"><span class="y">2026</span><span class="d">Sat 7 Nov &middot; 6:00 pm</span></div>
+            <div class="stop-what">
+              <h3>PSA FIFA Tournament</h3>
+              <p class="venue">Dooly Memorial 110 &middot; 6&ndash;9 pm</p>
+              <p>Pull up, show out, and play for exclusive PSA merch. Register through the form in the <a href="https://www.instagram.com/psa.umiami/">@psa.umiami</a> bio before the bracket fills up.</p>
+              <div class="tags"><span class="tag status">Upcoming</span><span class="tag tag-gold">PSA merch</span><span class="tag">Register to play</span></div>
+            </div>
+          </article>
+
+          <article class="stop rise" data-date="2026-11-18">
+            <div class="stop-when"><span class="y">2026</span><span class="d">Wed 18 Nov</span></div>
+            <div class="stop-what">
+              <h3>Desi Friendsgiving</h3>
+              <p class="venue">Time &amp; place on Engage and @psa.umiami</p>
+              <p>Thanksgiving, Pakistani-style: a desi spread, the people you&rsquo;ve met this semester, and one last get-together before the break.</p>
+              <div class="tags"><span class="tag status">Upcoming</span><span class="tag tag-gold">Desi food</span><span class="tag">Open to all</span></div>
+            </div>
+          </article>
+
+          <p class="era">Spring 2027 &mdash; planned</p>
+
+          <div class="plans">
+            <article class="plan rise">
+              <div class="icon" style="color:var(--rose)"><svg aria-hidden="true"><use href="#i-note"/></svg></div>
+              <span class="when">Spring &middot; Flagship</span>
+              <h4>Qawwali Night</h4>
+              <p>A live qawwali ensemble, mehfil-style floor seating on rugs and cushions, a make-your-own Kashmiri chai station, and lanterns everywhere.</p>
+            </article>
+            <article class="plan rise">
+              <div class="icon" style="color:var(--marigold)"><svg aria-hidden="true"><use href="#i-kite"/></svg></div>
+              <span class="when">Spring &middot; IM Fields</span>
+              <h4>Basant Celebration</h4>
+              <p>Lahore&rsquo;s spring kite festival on the IM fields &mdash; kites and string provided, yellow encouraged.</p>
+            </article>
+            <article class="plan rise">
+              <div class="icon" style="color:var(--turq)"><svg aria-hidden="true"><use href="#i-moon"/></svg></div>
+              <span class="when">Spring &middot; Date TBA</span>
+              <h4>Eid Celebration</h4>
+              <p>Food, cultural attire and the whole community together for Eid &mdash; continuing the tradition of the 2024 Eid ballroom night.</p>
+            </article>
+            <article class="plan rise">
+              <div class="icon" style="color:var(--um-orange)"><svg aria-hidden="true"><use href="#i-cricket"/></svg></div>
+              <span class="when">Spring &middot; IM Fields</span>
+              <h4>Cricket Tournament</h4>
+              <p>Tape-ball cricket, teams of friends, a scorebook and a boundary of cones. No experience needed.</p>
+            </article>
           </div>
-        </article>
-
-        <p class="era">Era: &ldquo;PSA&rdquo;</p>
-
-        <article class="stop rise">
-          <div class="stop-when"><span class="y">2024</span><span class="d">Thu 29 Feb &middot; 7:00 pm</span></div>
-          <div class="stop-what">
-            <h3>General Body Meeting</h3>
-            <p class="venue">Shalala Student Center</p>
-            <p>A leap-day GBM &mdash; the reset that rebuilt the board and the calendar.</p>
-            <div class="tags"><span class="tag">Members</span></div>
-          </div>
-        </article>
-
-        <article class="stop rise">
-          <div class="stop-when"><span class="y">2024</span><span class="d">Sun 14 Apr &middot; 7:00 pm</span></div>
-          <div class="stop-what">
-            <h3>Reflection &amp; Renewal: Eid Celebration</h3>
-            <p class="venue">Shalala Grand Ballroom</p>
-            <p>Food, guest speakers and activities for the Eid holiday. Cultural and formal attire, open to all &mdash; a full ballroom for Eid.</p>
-            <div class="tags"><span class="tag">Cultural attire</span><span class="tag">Open to all</span></div>
-          </div>
-        </article>
-
-        <article class="stop rise">
-          <div class="stop-when"><span class="y">2025</span><span class="d">Tue 4 Mar &middot; 6:00 pm</span></div>
-          <div class="stop-what">
-            <h3>PSA Spring General Body Meeting</h3>
-            <p class="venue">Shalala Student Center 314 &middot; Grand Ballroom West</p>
-            <p>The first GBM of the year: meet fellow members, play a night of Tambola, and hear the whole slate of events being planned. Three hours, green and white throughout.</p>
-            <div class="tags"><span class="tag tag-gold">Tambola</span><span class="tag">3 hours</span></div>
-          </div>
-        </article>
-
-        <article class="stop rise">
-          <div class="stop-when"><span class="y">2025</span><span class="d">Sat 12 Apr &middot; 6:00 pm</span></div>
-          <div class="stop-what">
-            <h3>Senior Send-off: Mock Shaadi</h3>
-            <p class="venue">The Rathskeller &middot; 1330 Miller Drive</p>
-            <p>Four and a half hours of mock-wedding chaos to send the seniors off &mdash; dinner, dancing, and senior shoutouts. The biggest night PSA has thrown.</p>
-            <div class="tags"><span class="tag tag-gold">Free food</span><span class="tag">6&ndash;10:30 pm</span></div>
-          </div>
-        </article>
-
-        <p class="era">2026&ndash;27 season</p>
-
-        <article class="stop rise">
-          <div class="stop-when"><span class="y">2026</span><span class="d">Tue 22 Sep &middot; 9:00 pm</span></div>
-          <div class="stop-what">
-            <h3>Fall GBM &times; Jeopardy Night</h3>
-            <p class="venue">Senate Room &middot; Shalala Student Center</p>
-            <p>The year&rsquo;s kickoff: new freshmen, the new board, the whole 2026&ndash;27 slate &mdash; and a round of Jeopardy to settle who actually knows their Pakistan trivia.</p>
-            <div class="tags"><span class="tag">Fall GBM</span><span class="tag tag-gold">Jeopardy</span></div>
-          </div>
-        </article>
-
-        <article class="stop rise">
-          <div class="stop-when"><span class="y">2026</span><span class="d">Thu 1 Oct &middot; 7:30 pm</span></div>
-          <div class="stop-what">
-            <h3>PSA Movie Night: <em>Jawani Phir Nahi Ani 2</em></h3>
-            <p class="venue">Shalala Activities Room North &middot; 7:30&ndash;10:00 pm</p>
-            <p>Subtitles on, biryani first-come-first-served. Bring your friends. RSVP on Engage.</p>
-            <div class="tags"><span class="tag tag-turq">Upcoming</span><span class="tag tag-gold">Free biryani</span><span class="tag">Open to all</span></div>
-          </div>
-        </article>
-
-        <article class="stop rise">
-          <div class="stop-when"><span class="y">2026</span><span class="d">Sun 1 Nov &middot; evening</span></div>
-          <div class="stop-what">
-            <h3>PSA Qawwali Night</h3>
-            <p class="venue">Lakeside Expo Center &middot; details on Engage &amp; @psa.umiami</p>
-            <p>A live qawwali ensemble, mehfil-style floor seating on rugs and cushions, a make-your-own Kashmiri chai station, and lanterns everywhere. PSA&rsquo;s fall flagship.</p>
-            <div class="tags"><span class="tag tag-turq">Upcoming</span><span class="tag tag-rose">Live qawwali</span><span class="tag">Open to all</span></div>
-          </div>
-        </article>
-
-        <p class="era">Spring 2027 &mdash; planned</p>
-
-        <article class="stop rise">
-          <div class="stop-when"><span class="y">2027</span><span class="d">Jan &rarr; Apr</span></div>
-          <div class="stop-what">
-            <h3>Spring GBM &middot; Cricket Tournament &middot; Eid &times; Basant &middot; Game Night</h3>
-            <p class="venue">Shalala &middot; Intramural Fields &middot; Grand Ballroom</p>
-            <p>A spring general body meeting in late January, cricket on the IM fields, the Eid celebration paired with Basant kite flying in late March, and a senior send-off game night in April. Dates land on Engage as they&rsquo;re booked.</p>
-            <div class="tags"><span class="tag">Planned</span></div>
-          </div>
-        </article>
+          <p class="plans-note">Dates land on Engage and <a href="https://www.instagram.com/psa.umiami/">@psa.umiami</a> as they&rsquo;re booked.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1120,6 +1309,25 @@ footer .wrap{ display:grid; gap:1.4rem; padding-block:clamp(2.4rem,5vw,3.6rem); 
     risers.forEach(function(el){ io.observe(el); });
   }
 
+  /* ---------- current season: Done / Next up / Upcoming from each event's date ---------- */
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+  var nextSet = false;
+  document.querySelectorAll(".season .stop[data-date]").forEach(function(el){
+    var p = el.getAttribute("data-date").split("-");
+    var day = new Date(+p[0], +p[1] - 1, +p[2]);
+    var chip = el.querySelector(".status");
+    if (!chip) return;
+    if (day < today) {
+      el.classList.add("is-done"); chip.classList.add("tag-done"); chip.textContent = "Done";
+    } else if (!nextSet) {
+      nextSet = true;
+      el.classList.add("is-next"); chip.classList.add("tag-next");
+      chip.textContent = day.getTime() === today.getTime() ? "Tonight" : "Next up";
+    } else {
+      chip.classList.add("tag-turq"); chip.textContent = "Upcoming";
+    }
+  });
+
   /* ---------- the truck drives the timeline as you scroll ---------- */
   var truck = document.getElementById("truck");
   var road = document.querySelector(".road");
@@ -1143,6 +1351,13 @@ footer .wrap{ display:grid; gap:1.4rem; padding-block:clamp(2.4rem,5vw,3.6rem); 
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
+    // opening a fold changes the road's length; re-measure as it animates
+    document.querySelectorAll("details.fold").forEach(function(d){
+      d.addEventListener("toggle", function(){
+        var t0 = performance.now();
+        (function follow(t){ drive(); if (t - t0 < 500) requestAnimationFrame(follow); })(t0);
+      });
+    });
     drive();
   }
 
