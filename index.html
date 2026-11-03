@@ -456,12 +456,6 @@ details.fold[open]::details-content{ height:auto; }
   border-top:1.5px dashed var(--hair);
 }
 .fold-body > .stop:first-child{ border-top:none; }
-.gap-row{
-  display:grid; grid-template-columns:minmax(0,7.5rem) 1fr; gap:clamp(.85rem,2.2vw,1.6rem);
-  padding:clamp(.85rem,1.8vw,1.1rem) clamp(1rem,2.2vw,1.5rem);
-  border:1.5px dashed var(--hair); border-radius:6px;
-}
-.gap-row .gap{ padding:0; font-size:.95rem; }
 
 /* current season */
 .season-head{
@@ -520,8 +514,6 @@ details.fold[open]::details-content{ height:auto; }
   filter:saturate(.92) contrast(1.03);
 }
 .archive figcaption{ font-family:var(--f-mono); font-size:.74rem; letter-spacing:.04em; color:var(--ink-3); line-height:1.5; }
-.gap{ color:var(--ink-2); max-width:62ch; padding-bottom:.4rem; }
-.gap a{ color:var(--marigold); }
 
 /* ---------- culture cards ---------- */
 .culture{ display:grid; gap:clamp(.9rem,1.8vw,1.2rem); grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); }
@@ -653,7 +645,6 @@ footer .wrap{ display:grid; gap:1.4rem; padding-block:clamp(2.4rem,5vw,3.6rem); 
   .fold-yrs small{ display:inline; font-size:1em; }
   .fold-txt{ grid-column:1; }
   .fold-thumbs{ display:none; }
-  .gap-row{ grid-template-columns:1fr; gap:.3rem; }
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -913,11 +904,6 @@ footer .wrap{ display:grid; gap:1.4rem; padding-block:clamp(2.4rem,5vw,3.6rem); 
           </div>
           </div>
         </details>
-
-        <div class="gap-row">
-          <span class="fold-yrs">1993<small> &ndash; 2019</small></span>
-          <p class="gap"><b>Help us fill the gap.</b> Twenty-six years of PSA happened between these photographs and the Engage archive. If you were part of it, write to <a href="mailto:hxs1101@miami.edu">hxs1101@miami.edu</a> &mdash; a name, a year, a photo. This page is the record.</p>
-        </div>
 
         <details class="fold">
           <summary>
@@ -1225,7 +1211,7 @@ footer .wrap{ display:grid; gap:1.4rem; padding-block:clamp(2.4rem,5vw,3.6rem); 
     <p class="eyebrow">Before you ask</p>
     <h2>Questions we get every semester.</h2>
     <div class="faq">
-      <details open>
+      <details>
         <summary>Do I have to be Pakistani to join?</summary>
         <div class="body">No. Membership is open to all University of Miami students, and PSA&rsquo;s constitution carries an explicit non-discrimination clause covering race, color, sexual orientation, religion, sex, national origin, age, disability, marital and veteran status, gender identity and expression, and political or religious affiliation. Events like Game Night and the Eid celebration were advertised as open to everyone at UM.</div>
       </details>
